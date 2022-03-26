@@ -11,7 +11,7 @@ jquery('nav').toggleClass('scrolled', jquery(this).scrollTop() > 0);
 const Navbar = () => {
     return (
     <>
-        <nav className="navbar navbar-expand-sm navbar-dark bg-transparent py-2 fixed-top">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark py-2 fixed-top">
             <div className="container-fluid ">
                 <span className="navbar-brand font-weight-bolder">Traveller's Paradise</span>
                 <a href="void(0)" className="navbar-toggler border-0" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@ const Navbar = () => {
                             <NavLink className="nav-link" activeClassName="active_class" exact to="/rooms">Rooms</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active_class" exact to="/abc">Booking</NavLink>
+                            <NavLink className="nav-link" activeClassName="active_class" exact to="/booking">Booking</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active_class" exact to="/about">About</NavLink>

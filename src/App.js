@@ -12,6 +12,7 @@ import About from './pages/About';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Booknow from './pages/Booknow';
+import { Booking } from './pages/Booking';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/rooms/" component={Rooms}/>
+          <Route exact path="/booking/" component={Booking}/>
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           <Route exact path="/booknow/:slug" component={Booknow} />
           <Route component={Error}/>

@@ -5,6 +5,7 @@ import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import defaultBcg from '../images/room-3.jpeg';
+import { OTP } from '../components/Otp';
 export default class Booknow extends Component {
     constructor (props){
         super(props);
@@ -122,9 +123,7 @@ export default class Booknow extends Component {
                                 <label htmlFor="payment" className="font-weight-bolder">Payment Options</label>
                                 <select className="form-control">
                                     <option disabled>Select payment option</option>
-                                    <option value="Credit">Credit Card</option>
-                                    <option value="Debit">Debit Card</option>
-                                    <option value="checkin">Pay during Checkin</option>
+                                    <option value="otp">SMS OTP</option>
                                 </select>
                             </div>
                         </div>
@@ -140,13 +139,9 @@ export default class Booknow extends Component {
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-body p-4">
-                            <h3>Thank you </h3>
-                            <p className="lead">Your room is booked successfully....</p>
+                            {<OTP/>}
                         </div>
-                        <div className="modal-footer">
-                            <Link to="/" className="btn btn-dark">Goto Home</Link>
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
