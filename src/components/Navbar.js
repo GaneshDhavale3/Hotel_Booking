@@ -34,7 +34,7 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active_class" exact to="/contact">Contact</NavLink>
-                        </li>                  
+                        </li>                             
                     </ul>
                 </div>
             </div>

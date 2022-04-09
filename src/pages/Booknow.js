@@ -86,9 +86,11 @@ export default class Booknow extends Component {
 
 
     calculateDaysLeft(checkIn, checkOut) {
-        if (!moment.isMoment(checkIn)) checkIn = moment(checkIn);
-        if (!moment.isMoment(checkOut)) checkOut = moment(checkOut);
-        return checkOut.diff(checkIn, "days");
+        var startDate = moment(checkIn,"MM-DD-YYYY")
+        var endDate = moment(checkOut,"MM-DD-YYYY")
+         return moment.duration(endDate.diff(startDate)).asDays();
+       
+
     }
     static contextType = RoomContext;
 
@@ -98,13 +100,11 @@ export default class Booknow extends Component {
         var len = 10;
         var random = parseInt((Math.random() * 9 + 1) * Math.pow(10,len-1), 10);
         const {formErrors} = this.state
-        const checkIn = this.state.checkIn
+        const checkIn = this.state.checkIn    
         const checkOut = this.state.checkOut
-        const daysLeft = this.calculateDaysLeft(checkIn, checkOut);
         let checkinFormattedDate = moment(checkIn).format('MM-DD-YYYY')
-        console.log(checkinFormattedDate)
         let checkoutFormattedDate = moment(checkOut).format('MM-DD-YYYY')
-        console.log(checkoutFormattedDate)
+        const daysLeft = this.calculateDaysLeft(checkinFormattedDate, checkoutFormattedDate);
         
 
 
@@ -275,9 +275,9 @@ export default class Booknow extends Component {
                         
                         <div className="row my-4" style={{paddingLeft:'30%'}}>
                         <Link to={"/otp"} className="btn btn-block btn-outline-primary">Confirm Booking</Link>
-                        </div>             
-                        
-                        </form>
+                        </div>   
+
+                        </form>          
 
                     </div>
                 </div>
