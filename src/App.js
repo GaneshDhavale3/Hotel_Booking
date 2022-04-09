@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Booknow from './pages/Booknow';
 import { Booking } from './pages/Booking';
+import { OTP } from './components/Otp';
 
 function App() {
   return (
@@ -27,12 +28,17 @@ function App() {
           <Route exact path="/booking/" component={Booking}/>
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           <Route exact path="/booknow/:slug" component={Booknow} />
+          <Route exact path="/otp/" component={OTP} />
           <Route component={Error}/>
+          
         </Switch>
         <Footer/>
+        
       </BrowserRouter>
+    
     </div>
   );
 }
+
 
 export default App;

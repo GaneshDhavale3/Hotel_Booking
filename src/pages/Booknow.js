@@ -5,40 +5,110 @@ import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import defaultBcg from '../images/room-3.jpeg';
-import { OTP } from '../components/Otp';
+import './Book.css'
+
+
+const emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  );
+
+
 export default class Booknow extends Component {
+
+
     constructor (props){
         super(props);
         this.state = {
         slug: this.props.match.params.slug,
         defaultBcg,
-        startDate: new Date(),
-        endDate: new Date(),
-    };
+        firstName: null,
+            lastName: null,
+            phoneNumber: null,
+            email: null,
+            checkIn: new Date,
+            checkOut: new Date,
+            bookingId: null,
+            
+            formErrors: {
+                firstName: "",
+                lastName: "",
+                email:"",
+                phoneNumber:""
+    }
+}
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     }
-    handleChangeStart(date) {
+
+
+    handleChangeStart = (date) => {
+       
         this.setState({
-        startDate: date
+        checkIn: date
         });
     }
+
+
     handleChangeEnd(date) {
         this.setState({
-        endDate: date
+        checkOut: date
         });
     }
-    calculateDaysLeft(startDate, endDate) {
-        if (!moment.isMoment(startDate)) startDate = moment(startDate);
-        if (!moment.isMoment(endDate)) endDate = moment(endDate);
-        return endDate.diff(startDate, "days");
+
+
+    handleChange = e => {
+        e.preventDefault();
+        const {name, value} = e.target
+        let formErrors = {...this.state.formErrors}
+    
+        switch (name) {
+            case "firstName":
+                formErrors.firstName = value.length < 1 ? "First Name cannot be blanked" : "";
+                break;
+    
+            case "lastName":
+                formErrors.lastName = value.length < 1 ? "Last Name cannot be blanked" : "";
+                break;
+    
+            case "email":
+                formErrors.email = emailRegex.test(value) ? "" : "Invalid email address";
+                break;
+    
+            case "phoneNumber":
+                formErrors.phoneNumber = value.length < 10 ? "Enter valid phone Number" : "";
+                break;
+            default:
+                break;
+        }
+        this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    }
+
+
+
+    calculateDaysLeft(checkIn, checkOut) {
+        if (!moment.isMoment(checkIn)) checkIn = moment(checkIn);
+        if (!moment.isMoment(checkOut)) checkOut = moment(checkOut);
+        return checkOut.diff(checkIn, "days");
     }
     static contextType = RoomContext;
+
     render() {
         const { getRoom } = this.context;
         const room = getRoom(this.state.slug);
-        const { startDate, endDate } = this.state;
-        const daysLeft = this.calculateDaysLeft(startDate, endDate);
+        var len = 10;
+        var random = parseInt((Math.random() * 9 + 1) * Math.pow(10,len-1), 10);
+        const {formErrors} = this.state
+        const checkIn = this.state.checkIn
+        const checkOut = this.state.checkOut
+        const daysLeft = this.calculateDaysLeft(checkIn, checkOut);
+        let checkinFormattedDate = moment(checkIn).format('MM-DD-YYYY')
+        console.log(checkinFormattedDate)
+        let checkoutFormattedDate = moment(checkOut).format('MM-DD-YYYY')
+        console.log(checkoutFormattedDate)
+        
+
+
+
     if(!room){
         return (<div className="container roomerror">
             <div className="row my-5">
@@ -93,28 +163,14 @@ export default class Booknow extends Component {
                             </table>
                         </div>
                     </div>
-                    <div className="row my-3">
-                        <div className="col-md-6 col-12">
-                            <div className="form-group">
-                                <label htmlFor="Fromdate" className="font-weight-bolder mr-3">From Date </label>
-                                <DatePicker selected={this.state.startDate} onChange={this.handleChangeStart} className="form-control" />
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-12">
-                            <div className="form-group">
-                                <label htmlFor="Todate" className="font-weight-bolder mr-3">To Date </label>
-                                <DatePicker selected={this.state.endDate} onChange={this.handleChangeEnd} className="form-control" />
-                            </div>
-                        </div>
-                    </div>
+        
                     <div className="row">
                         <div className="col-md-6 col-12">
-                            <h6 className="font-weight-bolder">Number of days : {daysLeft}</h6>
+                           
                             <mark>Please make sure Checkin time is from 9 am to 12 pm</mark>
                         </div>
                         <div className="col-md-6 col-12">
                             <h6 className="font-weight-bold">Price per day : <span className="badge badge-info">Rs {price}</span></h6>
-                            <h6 className="font-weight-bold">Total Price to be paid : <span className="text-primary">Rs {daysLeft*price}</span></h6>
                         </div>
                     </div>
                     <div className="row my-4">
@@ -129,7 +185,7 @@ export default class Booknow extends Component {
                         </div>
                         <div className="col-md-6 col-12 my-auto">
                             <div className="col-md-6 col-12 float-right">
-                                <button className="btn btn-block btn-outline-primary" data-toggle="modal" data-target="#thanks">Confirm Booking</button>
+                                <button className="btn btn-block btn-outline-primary" data-toggle="modal" data-target="#thanks">Book Now</button>
                             </div>
                         </div>
                     </div>
@@ -139,13 +195,100 @@ export default class Booknow extends Component {
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-body p-4">
-                            {<OTP/>}
+                        <div className='wrapper'>
+                   <div className='form-wrapper'>
+                    <h1>Enter the Details</h1>
+                        <form>
+
+                            <div className='firstName'>
+                                <label htmlFor="firstName">First Name</label>
+                                <input className={formErrors.firstName.length > 0 ? "error" : null} placeholder="First Name" type="text" name="firstName" onChange={this.handleChange} noValidate></input>
+                                {formErrors.firstName.length > 0 && (
+                                <span className="errorMessage">{formErrors.firstName}</span>
+                               )}
+                            </div>
+                            
+
+                            <div className='lastName'>
+                            <label htmlFor="lastName">Last Name</label>
+                            <input className={formErrors.lastName.length > 0 ? "error" : null} placeholder="Last Name" type="text" name="lastName" onChange={this.handleChange} noValidate></input>
+                            {formErrors.lastName.length > 0 && (
+                             <span className="errorMessage">{formErrors.lastName}</span>
+                              )}
+                            </div>
+
+
+                            <div className='email'>
+                            <label htmlFor="email">Email</label> 
+                            <input className={formErrors.email.length > 0 ? "error" : null} placeholder="Email" type="email" name="email" onChange={this.handleChange} noValidate></input>
+                            {formErrors.email.length > 0 && (
+                             <span className="errorMessage">{formErrors.email}</span>
+                               )}
+                            </div>
+
+                            
+                            <div className='phoneNumber'>
+                                <label htmlFor='phoneNumber'>Phone Number</label>
+                                <input className={formErrors.phoneNumber.length > 0 ? "error" : null} placeholder="Phone Number" name="phoneNumber" onChange={this.handleChange} noValidate></input>
+                                {formErrors.phoneNumber.length > 0 && (
+                                    <span className='errorMessage'>{formErrors.phoneNumber}</span>
+                                )}
+                            </div>
+
+                        <div className="row my-3">
+                        <div className="col-md-6 col-12">
+                            <div className="form-group">
+                                <label htmlFor="Fromdate" className="font-weight-bolder mr-3">Check In </label>
+                                <DatePicker selected={this.state.checkIn} onChange={this.handleChangeStart} className="form-control" />
+                            </div>
+                        </div>
+                        <div className="col-md-6 col-12">
+                            <div className="form-group">
+                                <label htmlFor="Todate" className="font-weight-bolder mr-3">Check Out </label>
+                                <DatePicker selected={this.state.checkOut} onChange={this.handleChangeEnd} className="form-control" />
+                            </div>
+                        </div>
+                        <h6 htmlFor="noOfDays" style={{paddingLeft:'17px'}}>Number of days : {daysLeft}</h6>
+                    </div>
+                 
+
+
+                    
+                        <div className="random">
+                            
+                                <label htmlFor="Random">Booking ID: </label>
+                                <input type='text' value={random} ></input>
                         </div>
                        
+                    
+                        <div className="roomName">
+                            <label htmlFor="RoomName">Room Type</label>
+                            <input type='text' value={name}></input>
+
+                        </div>
+                        
+                        <div className='daysLeft'>
+                        <label className='price'>Total Price to be paid : </label>
+                        <input className="text-primary" value={daysLeft*price}></input>
+                        </div>
+                        
+                        
+                        <div className="row my-4" style={{paddingLeft:'30%'}}>
+                        <Link to={"/otp"} className="btn btn-block btn-outline-primary">Confirm Booking</Link>
+                        </div>             
+                        
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
-        )
+    </div>
+</div>
+
+             
+    </div>
+    
+        )    
     }
 }
