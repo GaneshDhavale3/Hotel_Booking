@@ -5,7 +5,7 @@ import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 import firebaseConfig from "./FireBase";
 import '../App.css'
-import Hero from "./Hero";
+
 
 export class OTP extends Component {
     
@@ -44,7 +44,7 @@ export class OTP extends Component {
     render(){
         return (
             <div className="container">
-               
+    
 
             <div className="otp" id='firebaseui-auth-container'></div>
 

@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/booking/" component={Booking}/>
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           <Route exact path="/booknow/:slug" component={Booknow} />
-          <Route exact path="/otp/" component={OTP} />
+          <Route exact path="/otp" component={OTP} />
           <Route component={Error}/>
           
         </Switch>
