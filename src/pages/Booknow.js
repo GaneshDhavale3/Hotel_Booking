@@ -165,6 +165,7 @@ export default class Booknow extends Component {
                     </div>
                     <form className='style'>
                         <h2 style={{paddingLeft:'35%'}}>Enter the Details</h2>
+                        <br/>
   <div className="form-group">
   <div className='row'>
   <div className="col-md-6 col-12">
@@ -199,11 +200,11 @@ export default class Booknow extends Component {
 <div className="row" style={{paddingTop:"10px"}}>
 <div className="col-md-6 col-12">
 <label htmlFor="Fromdate" className="font-weight-bolder mr-3">Check In </label>
-<DatePicker selected={this.state.checkIn} onChange={this.handleChangeStart} className="form-control" />
+<DatePicker selected={this.state.checkIn} onChange={this.handleChangeStart} minDate={moment().toDate()} className="form-control" />
 </div>
 <div className="col-md-6 col-12">
 <label htmlFor="Todate" className="font-weight-bolder mr-3">Check Out </label>
-<DatePicker selected={this.state.checkOut} onChange={this.handleChangeEnd} className="form-control" />
+<DatePicker selected={this.state.checkOut} onChange={this.handleChangeEnd} minDate={moment().toDate()} className="form-control" />
 </div>
 <h6 htmlFor="noOfDays" style={{paddingLeft:'17px', paddingTop:'30px'}}>Number of days : {daysLeft}</h6>
 </div>
