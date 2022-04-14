@@ -535,3 +535,83 @@ box-shadow: inset 0 -1px 0 #ddd;
 .otp{
   margin-top: 15%;
 }
+
+/* Booking Validation */
+.style{
+  padding-top: 60px;
+}
+/* End of Booking Validation */
+  
+  .errorMessage {
+    color: red;
+    font-size: 0.75em;
+    display: relative;
+  }
+
+
+  /* Preloading */
+  .container1 {
+    margin-top: 9%;
+    padding-left: 40%;
+    
+  }
+  
+  .spinner {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+  
+  .spinner span {
+    font-size: 1rem;
+    animation: fade 1.8s linear 0s infinite;
+    padding-right: 1rem;
+  }
+  
+  .half-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #343a3f;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.5s linear 0s infinite;
+  }
+  
+  .completed {
+    font-size: 2rem;
+    color: #03fc4e;
+  
+    animation: bigger 1s linear;
+  }
+  
+  @keyframes bigger {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(2);
+    }
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* End of Preloading */

@@ -5,7 +5,7 @@ import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import defaultBcg from '../images/room-3.jpeg';
-import './Book.css';
+
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -237,7 +237,7 @@ export default class Booknow extends Component {
                         </div>
                         <div className="col-md-6 col-12 my-auto">
                             <div className="col-md-6 col-12 float-right">
-                                <Link to={"/otp"} className="btn btn-block btn-outline-primary">Book Now</Link>
+                                <Link to={"/delay"} className="btn btn-block btn-outline-primary">Book Now</Link>
                             </div>
                         </div>
                        

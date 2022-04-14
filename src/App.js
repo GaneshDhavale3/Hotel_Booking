@@ -14,6 +14,7 @@ import Contact from './pages/Contact';
 import Booknow from './pages/Booknow';
 import { Booking } from './pages/Booking';
 import { OTP } from './components/Otp';
+import Delays from './components/Delays';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           <Route exact path="/booknow/:slug" component={Booknow} />
           <Route exact path="/otp" component={OTP} />
+          <Route exact path="/delay" component={Delays} />
           <Route component={Error}/>
           
         </Switch>
