@@ -13,6 +13,8 @@ import Booknow from './pages/Booknow';
 import { Booking } from './pages/Booking';
 import { OTP } from './components/Otp';
 import Delays from './components/Delays';
+import Under from './pages/Under';
+import Preloading from './components/Preloading';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route exact path="/booknow/:slug" component={Booknow} />
           <Route exact path="/otp" component={OTP} />
           <Route exact path="/delay" component={Delays} />
+          <Route exact path="/under" component={Under} />
+          <Route exact path="/preload" component={Preloading} />
           <Route component={Error}/>
           
         </Switch>
