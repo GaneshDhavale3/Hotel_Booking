@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import Invoice from './Invoice';
 
 export class Booking extends Component {
     render() {
@@ -8,7 +9,7 @@ export class Booking extends Component {
             <div>
                 <Navbar/>
             <div style={{marginTop:"10%"}}>
-                <h1>Booking Details</h1>
+                <Invoice />
             </div>
             <Footer/>
             </div>

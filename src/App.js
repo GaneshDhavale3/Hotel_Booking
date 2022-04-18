@@ -13,8 +13,12 @@ import Booknow from './pages/Booknow';
 import { Booking } from './pages/Booking';
 import { OTP } from './components/Otp';
 import Delays from './components/Delays';
+<<<<<<< HEAD
 import Under from './pages/Under';
 import Preloading from './components/Preloading';
+=======
+import Invoice from './pages/Invoice';
+>>>>>>> 84a0ad36a7fd151ef7e9df447cac8452e5f90e43
 
 function App() {
   return (
@@ -30,8 +34,12 @@ function App() {
           <Route exact path="/booknow/:slug" component={Booknow} />
           <Route exact path="/otp" component={OTP} />
           <Route exact path="/delay" component={Delays} />
+<<<<<<< HEAD
           <Route exact path="/under" component={Under} />
           <Route exact path="/preload" component={Preloading} />
+=======
+          <Route exact path="/invoice" component={Invoice} />
+>>>>>>> 84a0ad36a7fd151ef7e9df447cac8452e5f90e43
           <Route component={Error}/>
           
         </Switch>
