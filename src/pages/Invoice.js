@@ -6,6 +6,8 @@ import jsPDF from 'jspdf';
 import pdfMake from 'pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import htmlToPdfmake from 'html-to-pdfmake';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 class Invoice extends React.Component {
 
@@ -28,7 +30,11 @@ class Invoice extends React.Component {
     render() {
 
         return (
+            <div className='back'>
+                <Navbar/>
+                <div style={{paddingTop:"3%"}}>
 
+                </div>
             <div className="App container mt-5 " >
                 <div id="divToPrint" className="m-3">
                     <div class="row d-flex justify-content-center">
@@ -141,6 +147,8 @@ class Invoice extends React.Component {
                         </div>
                     </div>
                 </div>
+            </div>
+            <Footer/>
             </div>
         )
     };
