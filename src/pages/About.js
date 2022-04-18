@@ -3,8 +3,12 @@ import { FaFacebookSquare,FaLinkedin } from 'react-icons/fa';
 import {IoLogoYoutube} from 'react-icons/io';
 import { AiFillInstagram } from 'react-icons/ai';
 import {Link} from 'react-router-dom';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 function About() {
     return (
+        <div>
+            <Navbar/>
     <div className="container aboutus">
         <div className="row">
             <div className="col-md-6 col-12 my-auto">
@@ -158,6 +162,8 @@ function About() {
             </div>
             
         </div>
+    </div>
+    <Footer/>
     </div>
     )
 }

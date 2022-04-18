@@ -7,9 +7,7 @@ import Home from './pages/Home';
 import Rooms from './pages/Rooms';
 import SingleRoom from './pages/SingleRoom';
 import Error from './pages/Error';
-import Navbar from './components/Navbar';
 import About from './pages/About';
-import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Booknow from './pages/Booknow';
 import { Booking } from './pages/Booking';
@@ -20,7 +18,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar/>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
@@ -34,7 +31,6 @@ function App() {
           <Route component={Error}/>
           
         </Switch>
-        <Footer/>
         
       </BrowserRouter>
     

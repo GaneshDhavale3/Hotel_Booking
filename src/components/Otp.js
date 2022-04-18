@@ -44,13 +44,7 @@ export class OTP extends Component {
     render(){
         return (
             <div className="container">
-    
-
             <div className="otp" id='firebaseui-auth-container'></div>
-
-            <div style={{paddingTop:"20%"}}>
-            </div>
-
             </div>
         )
     }

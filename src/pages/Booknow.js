@@ -5,6 +5,8 @@ import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import defaultBcg from '../images/room-3.jpeg';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 
 const emailRegex = RegExp(
@@ -114,6 +116,8 @@ export default class Booknow extends Component {
         const {name,capacity,size,price,breakfast,pets,images} = room;
         const [mainImg, ...defaultBcg] = images;
         return (
+         <div> 
+             <Navbar/>
         <div className="container my-5">
             <div className="row">
                 <div className="col-md-10 mx-auto col-12 card shadow-lg border-0 p-4">
@@ -237,14 +241,16 @@ export default class Booknow extends Component {
                         </div>
                         <div className="col-md-6 col-12 my-auto">
                             <div className="col-md-6 col-12 float-right">
-                                <Link to={"/delay"} className="btn btn-block btn-outline-primary">Book Now</Link>
+                                <Link to={"/delay"} className="btn btn-block btn-outline-primary">Confirm Booking</Link>
                             </div>
-                        </div>
+                        </div>     
                        
                     </div>
                     </form>
                 </div>
             </div>
+        </div>
+        <Footer/>
         </div>
         )
     }

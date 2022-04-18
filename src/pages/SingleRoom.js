@@ -4,6 +4,8 @@ import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import { RoomContext } from '../context';
 import StyledHero from '../components/StyledHero';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default class SingleRoom extends Component {
     constructor (props){
@@ -34,6 +36,7 @@ export default class SingleRoom extends Component {
         const [mainImg, ...defaultBcg] = images;
         return (
             <>
+            <Navbar/>
             <StyledHero img={mainImg || this.state.defaultBcg }>
            
             <Banner title={`${name} room`}>
@@ -79,11 +82,12 @@ export default class SingleRoom extends Component {
                 <div className="p-4 clearfix">
                     <div className="row">
                        <div className="col-md-3 col-12 ml-auto">
-                          <Link to={`/booknow/${this.state.slug}`} className="btn btn-outline-primary btn-block btn-lg float-right ">Room Details</Link>
+                          <Link to={`/booknow/${this.state.slug}`} className="btn btn-outline-primary btn-block btn-lg float-right ">Book Now</Link>
                        </div>
                     </div>
                 </div>
             </section>
+            <Footer/>
             </>
         )
     }

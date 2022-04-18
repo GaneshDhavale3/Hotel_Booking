@@ -29,8 +29,6 @@ constructor(props){
             <div className='half-spinner'>
             </div>
             </div>
-            <div style={{paddingTop:"40%"}}>
-                    </div>
             </div>
 
           :
