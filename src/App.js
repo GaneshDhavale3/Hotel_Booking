@@ -9,6 +9,7 @@ import SingleRoom from './pages/SingleRoom';
 import Error from './pages/Error';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import userReg from './pages/userReg';
 import Booknow from './pages/Booknow';
 import { Booking } from './pages/Booking';
 import { OTP } from './components/Otp';
@@ -33,6 +34,8 @@ function App() {
           <Route exact path="/delay" component={Delays} />
           <Route exact path="/under" component={Under} />
           <Route exact path="/preload" component={Preloading} />
+          <Route exact path="/userReg" component={userReg} />
+          
           
           <Route component={Error}/>
           

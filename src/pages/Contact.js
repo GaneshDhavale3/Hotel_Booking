@@ -1,43 +1,63 @@
-import React from 'react'
-const Contact = () => {
-return (
-<div className="container contact">
-    <div className="row">
-        <div className="col-md-8 col-12 mx-auto">
-            <div className="card shadow-lg border-0 p-4">
-                <h1 className="text-center bg-dark text-white display-4 d-inline-block">Contact us</h1>
-                <div className="form-group my-5">
-                    <div className="row">
-                        <div className="col-md-6 col-12 mx-auto my-2">
-                            <input type="text" className="form-control-lg" placeholder="First Name" required />
-                        </div>
-                        <div className="col-md-6 col-12 mx-auto my-2">
-                            <input type="text" className="form-control-lg" placeholder="last Name" required />
-                        </div>
+import React from 'react';
+import { useState } from 'react';
+import Navbar from "../components/Navbar";
+import Footer from  "../components/Footer";
+import userReg from  "./userReg";
+import "./Register.css"
+
+import {  Link } from 'react-router-dom';
+
+
+function Contact() {
+    const [user, setUser] = useState('');
+    const [passwd, setPasswd] = useState('');
+
+    // For Login On-Click
+    const submit = () => {
+
+        let path = `userRegr`;
+        this.props.history.push(path);
+        console.log(user + ' ' + passwd);
+    }
+
+   
+  
+
+    return (
+        <div>
+          <Navbar />  
+        <div className="bg-style">
+        <form>
+        <div className="row justify-content-center pt-5 mt-5">
+            <div className="col-sm-6">
+                <div className="card p-4"  className="login-style">
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input type="email" className="form-control" placeholder="example@gmail.com" 
+                            onChange={e => setUser(e.target.value)} id="email" required/>
+                    </div>
+                    <div className="form-group mt-3">
+                        <label>Password</label>
+                        <input type="password" className="form-control"
+                            onChange={e => setPasswd(e.target.value)} id="pwd" required/>
+                    </div>
+                    {/* <div><a href="">Forgot Password?</a></div> */}
+                    <div><br /></div>
+
+                    <div >
+                        <button type="button" onClick={submit} class="btn btn-primary">Sign In</button>&nbsp;&nbsp;&nbsp;
+                        <Link to="/userReg"><button type="button" class="btn btn-primary">Sign Up</button>
+                        </Link>
                     </div>
                 </div>
-                <div className="form-group mb-5">
-                    <div className="row">
-                        <div className="col-md-6 col-12 mx-auto my-2">
-                            <input type="email" className="form-control-lg" placeholder="Email Address" required />
-                        </div>
-                        <div className="col-md-6 col-12 mx-auto my-2">
-                            <input type="tel" className="form-control-lg" placeholder="Phone no." required />
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-11">
-                        <textarea className="form-control" row="20" placeholder="Your message" required></textarea>
-                    </div>
-                </div>
-                <div className="mt-5 col-md-6 col-12 mx-auto">
-                    <button className="btn btn-outline-dark btn-lg btn-block">Send Message</button>
-                </div>
+
+
             </div>
         </div>
-    </div>
-</div>
-)
+        </form>
+        </div>
+        <Footer />
+        </div>
+    )
 }
 export default Contact
