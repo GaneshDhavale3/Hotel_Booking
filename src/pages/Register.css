@@ -1,0 +1,57 @@
+.bg-style {
+    background: url("../images/KD.jpg") center/cover no-repeat;
+        background-size: cover;
+       width:100%;
+       height: 810px;
+       padding-left:0px;
+    }
+    
+    
+    .heading {
+        width:400px;
+        background-color: rgb(0,0,0,6);
+        margin: auto;
+        margin-top:30px;
+        color:#ffffff;
+        padding: 0px 0px 0px 0px;
+        text-align: center;
+        border-radius: 15px 15px 0px 0px;
+        height: 40px;
+    }
+    
+    
+    .form-style{
+        background-color: rgb(0,0,0,.5);
+        border-radius: 0px 0px 15px 15px;
+        width:400px;
+        margin:auto;
+        color: #ffffff;
+        padding-left: 20px;
+        padding-top:10px;
+        margin-bottom: 80px;
+        padding-bottom: 10px;
+        
+    }
+    
+    .login-style{
+        background-color: rgb(0,0,0,.5);
+        border-radius: 15px 15px 15px 15px;
+        width:400px;
+        margin:auto;
+        color: #ffffff;
+        padding-left: 20px;
+        padding-top:20px;
+        margin-bottom: 100px;
+        padding-bottom: 20px;
+        
+    }
+    
+    
+    .form-control{
+        
+        width:350px;
+        top:-37px;
+        line-height: 20px;
+    }
+    
+    
