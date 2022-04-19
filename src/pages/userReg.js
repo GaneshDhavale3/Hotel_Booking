@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState ,useEffect} from 'react';
 import Navbar from "../components/Navbar";
 import Footer from  "../components/Footer";
-import './Register.css';
+
 
 function UserReg() {
 
@@ -102,7 +102,7 @@ function UserReg() {
             <div className="col-sm-6" >
             
             <div className="heading"><h2>Create Account</h2></div>
-                <div className="card p-4" className="form-style">
+                <div  className="form-style">
                     
                     <div className="form-group" >
                         <label>First Name</label>

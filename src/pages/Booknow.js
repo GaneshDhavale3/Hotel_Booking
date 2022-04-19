@@ -203,7 +203,7 @@ export default class Booknow extends Component {
 
 <div className="row" style={{paddingTop:"10px"}}>
 <div className="col-md-6 col-12">
-<label htmlFor="Fromdate" className="font-weight-bolder mr-3">Check In </label>
+<label htmlFor="Fromdate" className="font-weight-bolder mr-3">Check In </label><br/>
 <DatePicker selected={this.state.checkIn} onChange={this.handleChangeStart} minDate={moment().toDate()} className="form-control" />
 </div>
 <div className="col-md-6 col-12">
@@ -241,7 +241,7 @@ export default class Booknow extends Component {
                         </div>
                         <div className="col-md-6 col-12 my-auto">
                             <div className="col-md-6 col-12 float-right">
-                                <Link to={"/delay"} className="btn btn-block btn-outline-primary">Confirm Booking</Link>
+                               <Link to={"/delay"} style={{textDecoration:"none"}}> <button className="btn btn-block btn-outline-primary">Confirm Booking</button></Link>
                             </div>
                         </div>     
                        

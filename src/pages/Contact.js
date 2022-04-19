@@ -2,9 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from  "../components/Footer";
-import userReg from  "./userReg";
-import "./Register.css"
-
 import {  Link } from 'react-router-dom';
 
 
@@ -26,11 +23,11 @@ function Contact() {
     return (
         <div>
           <Navbar />  
-        <div className="bg-style">
-        <form>
+        <div className="bg-style1">
+        <form >
         <div className="row justify-content-center pt-5 mt-5">
-            <div className="col-sm-6">
-                <div className="card p-4"  className="login-style">
+            <div className="col-sm-6" style={{paddingTop:"9%"}}>
+                <div  className="login-style">
                     <div className="form-group">
                         <label>Username</label>
                         <input type="email" className="form-control" placeholder="example@gmail.com" 
