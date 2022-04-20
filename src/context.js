@@ -17,7 +17,6 @@ export default class RoomProvider extends Component {
         minSize: 0,
         maxSize: 0,
         breakfast: false,
-        pets: false
     };
     componentDidMount(){
         let rooms = this.formatData(items);
@@ -59,7 +58,7 @@ export default class RoomProvider extends Component {
     }
     filterRooms = () => {
         let{
-            rooms,type,capacity,price,minSize,maxSize,breakfast,pets
+            rooms,type,capacity,price,minSize,maxSize,breakfast
         }= this.state
         // for all the rooms
         let tempRooms = [...rooms];
@@ -85,10 +84,6 @@ export default class RoomProvider extends Component {
         //filter by breakfast
         if(breakfast){
             tempRooms = tempRooms.filter(room => room.breakfast === true)
-        }
-        //filter by pets
-        if(pets){
-            tempRooms = tempRooms.filter(room => room.pets === true)
         }
         //change state
         this.setState({

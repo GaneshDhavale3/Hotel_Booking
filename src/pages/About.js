@@ -39,7 +39,7 @@ function About() {
                             <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                             <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
                         </ol>
-                        <div className="carousel-inner card border-0 shadow-lg p-4">
+                        <div className="Carousel-inner card border-0 shadow-lg p-4">
                             <div className="carousel-item active text-center">
                                 <div className="row">
                                     <div className="col-md-8 col-12 my-auto">

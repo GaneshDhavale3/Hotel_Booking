@@ -27,7 +27,6 @@ export default [
       price: 600,
       size: 200,
       capacity: 1,
-      pets: false,
       breakfast: false,
       featured: false,
       description:
@@ -84,7 +83,6 @@ export default [
       price: 800,
       size: 250,
       capacity: 1,
-      pets: false,
       breakfast: false,
       featured: false,
       description:
@@ -141,7 +139,6 @@ export default [
       price: 1000,
       size: 300,
       capacity: 1,
-      pets: true,
       breakfast: false,
       featured: false,
       description:
@@ -198,7 +195,6 @@ export default [
       price: 1250,
       size: 400,
       capacity: 1,
-      pets: true,
       breakfast: true,
       featured: false,
       description:
@@ -255,7 +251,6 @@ export default [
       price: 1500,
       size: 300,
       capacity: 2,
-      pets: false,
       breakfast: false,
       featured: false,
       description:
@@ -312,7 +307,6 @@ export default [
       price: 1850,
       size: 350,
       capacity: 2,
-      pets: false,
       breakfast: false,
       featured: false,
       description:
@@ -369,7 +363,6 @@ export default [
       price: 2000,
       size: 400,
       capacity: 2,
-      pets: true,
       breakfast: false,
       featured: false,
       description:
@@ -426,7 +419,6 @@ export default [
       price: 2500,
       size: 500,
       capacity: 2,
-      pets: true,
       breakfast: true,
       featured: true,
       description:
@@ -483,7 +475,6 @@ export default [
       price: 3500,
       size: 500,
       capacity: 3,
-      pets: false,
       breakfast: false,
       featured: false,
       description:
@@ -540,7 +531,6 @@ export default [
       price: 4050,
       size: 550,
       capacity: 4,
-      pets: false,
       breakfast: false,
       featured: false,
       description:
@@ -597,7 +587,6 @@ export default [
       price: 4500,
       size: 600,
       capacity: 5,
-      pets: true,
       breakfast: false,
       featured: false,
       description:
@@ -654,7 +643,6 @@ export default [
       price: 4800,
       size: 700,
       capacity: 6,
-      pets: true,
       breakfast: true,
       featured: true,
       description:
@@ -711,7 +699,6 @@ export default [
       price: 5000,
       size: 1000,
       capacity: 10,
-      pets: true,
       breakfast: true,
       featured: true,
       description:

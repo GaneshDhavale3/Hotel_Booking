@@ -9,7 +9,7 @@ return [...new Set(items.map(item => item[value]))]
 export default function RoomsFilter({rooms}) {
     const context = useContext(RoomContext);
     const {
-    handleChange , type ,capacity ,price,minPrice,maxPrice,minSize,maxSize,breakfast,pets
+    handleChange , type ,capacity ,price,minPrice,maxPrice,minSize,maxSize,breakfast,
     } = context;
 
     //get unique type
@@ -51,10 +51,6 @@ export default function RoomsFilter({rooms}) {
                     <div className="custom-control custom-checkbox my-5">
                         <input type="checkbox" className="custom-control-input" name="breakfast" id="breakfast" checked={breakfast} onChange={handleChange} />
                         <label htmlFor="breakfast" className="custom-control-label">Breakfast</label>
-                    </div>
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" name="pets" id="pets" checked={pets} onChange={handleChange} />
-                        <label htmlFor="pets" className="custom-control-label">Pets</label>
                     </div>
                     <div className="input-group my-5">
                         <label htmlFor="size" className="mr-3">Room Size </label>
