@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState ,useEffect} from 'react';
 import Navbar from "../components/Navbar";
 import Footer from  "../components/Footer";
+import { useHistory } from "react-router-dom";
 
 
 function UserReg() {
@@ -18,6 +19,7 @@ function UserReg() {
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    let history = useHistory();
 
 
     const handleChange = (e) => {
@@ -45,22 +47,27 @@ function UserReg() {
         e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
-
+    if(isSubmit===true){
+      history.push("/contact")
+    }
+    
        
         
     };
 
     useEffect(() => {
-        console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-          console.log(formValues);
         }
       }, [formErrors]);
+      
       const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        if (!values.username) {
-          errors.fistname = "Username is required!";
+        if (!values.firstname) {
+          errors.firstname = "First name is required!";
+        }
+        if(!values.lastname) {
+          errors.lastname = "Last name is required"
         }
         if(values.contact.length !== 10){
           errors.contact ="Mobile number must cantain 10 digits";
@@ -74,7 +81,7 @@ function UserReg() {
           errors.password = "Password is required";
         } else if (values.password.length < 4) {
           errors.password = "Password must be more than 4 characters";
-        } else if (values.password.length > 10) {
+        } else if (values.password.length >= 10) {
           errors.password = "Password cannot exceed more than 10 characters";
         }
 
@@ -91,13 +98,16 @@ function UserReg() {
 
 
     return (
-        <div>
+        <div className="bg-style">
 
         <Navbar />
-        <div className="bg-style">
+        <div style={{paddingTop:"3%"}}>
+
+                </div>
            
       <div >
       <form onSubmit={HandleSubmit}>    
+      <div className="App container mt-5 " >
         <div className="row justify-content-center pt-5" >
             <div className="col-sm-6" >
             
@@ -106,9 +116,9 @@ function UserReg() {
                     
                     <div className="form-group" >
                         <label>First Name</label>
-                        <input required type="text" className="form-control" 
-                            onChange={handleChange} value={formValues.firstname} id="firstname" name="firstname" />
-                            <p>{formErrors.firstname}</p>
+                        <input  type="text" className="form-control" 
+                            onChange={handleChange} value={formValues.firstname} id="firstname" name="firstname" autoComplete="off" />
+                            <p className="text-danger">{formErrors.firstname}</p>
                        
                     </div>
 
@@ -116,8 +126,8 @@ function UserReg() {
                     <div className="form-group">
                         <label>Last Name</label>
                         <input type="text" className="form-control"  
-                            onChange={handleChange} value={formValues.lastname} id="lastname" name="lastname" required />
-                             <p>{formErrors.lastname}</p>
+                            onChange={handleChange} value={formValues.lastname} id="lastname" name="lastname" autoComplete="off"  />
+                             <p className="text-danger">{formErrors.lastname}</p>
                     
                     </div>
                    
@@ -125,10 +135,10 @@ function UserReg() {
                         <label>Gender</label>&nbsp;&nbsp;&nbsp;
 
                         <input type="radio"
-                            id="Male" name="gender" value="Male" onChange={handleChange}  required /><label>Male</label>&nbsp;&nbsp;&nbsp;
+                            id="Male" name="gender" value="Male" onChange={handleChange}   /><label>Male</label>&nbsp;&nbsp;&nbsp;
 
                         <input type="radio"
-                            id="Female" name="gender" value="Female" onChange={handleChange}  required /> <label>Female</label>
+                            id="Female" name="gender" value="Female" onChange={handleChange}   /> <label>Female</label>
                         
                                         
                     </div>
@@ -137,7 +147,7 @@ function UserReg() {
                     <div className="form-group">
                         <label>Contact Number</label>
                         <input type="tel" className="form-control" 
-                               onChange={handleChange} value={formValues.contact} id="contact" name="contact" required />
+                               onChange={handleChange} value={formValues.contact} id="contact" name="contact" autoComplete="off"  />
                         <p class="text-danger">{formErrors.contact}</p>
                         
                     </div>
@@ -145,7 +155,7 @@ function UserReg() {
                     <div className="form-group">
                         <label>Email</label>
                         <input type="email" className="form-control" placeholder="example@gmail.com" 
-                            onChange={handleChange} value={formValues.email} id="email" name="email" required />
+                            onChange={handleChange} value={formValues.email} id="email" name="email" autoComplete="off"  />
                          <p class="text-danger">{formErrors.email}</p>               
                     </div>
 
@@ -153,14 +163,14 @@ function UserReg() {
                     <div className="form-group mt-3">
                         <label>Password</label>
                         <input type="password" className="form-control"  
-                           onChange={handleChange} value={formValues.password} id="password" name="password" required />
+                           onChange={handleChange} value={formValues.password} id="password" name="password" autoComplete="off" />
                        
                     </div>
 
                     <div className="form-group mt-3">
                         <label>Confirm Password</label>
                         <input type="password" className="form-control"
-                            onChange={handleChange} value={formValues.cpwd} id="cpwd" name="cpwd" required />
+                            onChange={handleChange} value={formValues.cpwd} id="cpwd" name="cpwd" autoComplete="off"  />
                         <p class="text-danger">{formErrors.cpwd}</p>
                     </div>
 
@@ -171,8 +181,8 @@ function UserReg() {
                 </div>
             </div>
         </div>
-        </form>
         </div>
+        </form>
         </div>
         <Footer/>
         </div>

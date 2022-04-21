@@ -540,13 +540,10 @@ box-shadow: inset 0 -1px 0 #ddd;
 .style{
   padding-top: 60px;
 }
+
 /* End of Booking Validation */
   
-  .errorMessage {
-    color: red;
-    font-size: 0.75em;
-    display: relative;
-  }
+ 
 
 
   /* Preloading */
@@ -758,11 +755,13 @@ box-shadow: inset 0 -1px 0 #ddd;
 
 /* Begining of Registration and login */
 .bg-style {
-  background: url("./images/KD.jpg") center/cover no-repeat;
+  background: url("./images/KD.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
     width: 100%; 
     height: 100%;
-    padding-top: 5%;
+    /* padding-top: 5%; */
     
     
   }

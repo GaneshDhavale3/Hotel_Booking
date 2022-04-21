@@ -25,6 +25,7 @@ function Contact() {
           <Navbar />  
         <div className="bg-style1">
         <form >
+        <div className="App container mt-5 " >   
         <div className="row justify-content-center pt-5 mt-5">
             <div className="col-sm-6" style={{paddingTop:"9%"}}>
                 <div  className="login-style">
@@ -50,6 +51,7 @@ function Contact() {
 
 
             </div>
+        </div>
         </div>
         </form>
         </div>

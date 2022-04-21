@@ -9,9 +9,7 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
 
-const emailRegex = RegExp(
-    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-  );
+
 
 export default class Booknow extends Component {
 
@@ -24,13 +22,16 @@ export default class Booknow extends Component {
         defaultBcg,
         checkIn: new Date(),
         checkOut: new Date(),
-        bookingId: null,   
-        formErrors: {
-            firstName: "",
-            lastName: "",
-            email:"",
-            phoneNumber:""     
-        }
+        bookingId: null,    
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        firstNameError: "",
+        lastNameError: "",
+        emailError: "",
+        phoneNumberError: ""        
+        
 }
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
@@ -48,32 +49,68 @@ export default class Booknow extends Component {
         });
     }
 
-    handleChange = e => {
-        e.preventDefault();
-        const {name, value} = e.target
-        let formErrors = {...this.state.formErrors}
-    
-        switch (name) {
-            case "firstName":
-                formErrors.firstName = value.length < 1 ? "Field cannot be blanked" : "";
-                break;
-    
-            case "lastName":
-                formErrors.lastName = value.length < 1 ? "Field cannot be blanked" : "";
-                break;
-    
-            case "email":
-                formErrors.email = emailRegex.test(value) ? "" : "Invalid email address";
-                break;
-    
-            case "phoneNumber":
-                formErrors.phoneNumber = value.length < 10 ? "Enter valid phone Number" : "";
-                break;
-            default:
-                break;
-        }
-        this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+
+    handleChange = e =>{
+        
+        this.setState({[e.target.name]: e.target.value})
+ 
     }
+
+    validate = () => {
+        let isError = false;
+        const errors = {
+            firstNameError: "",
+            lastNameError: "",
+            emailError: "",
+            phoneNumberError: ""
+        }
+ 
+        if(!this.state.firstName) {
+            isError = true;
+            errors.firstNameError = "Field Cannot be Blank"
+        }
+        if(!this.state.lastName) {
+            isError = true;
+            errors.lastNameError = "Field Cannot be Blank"
+        }
+        if (!this.state.email) {
+            isError = true
+         errors.emailError = "Email is required!";
+       
+       }
+       if(this.state.phoneNumber < 10){
+           isError = true;
+         errors.phoneNumberError ="Mobile number must cantain 10 digits";
+       }
+       this.setState({
+           ...this.state,
+           ...errors
+       });
+       return isError;
+    }
+
+    handleSubmit = (e) =>{
+        e.preventDefault();
+        const err = this.validate();
+ 
+        if(!err) {
+            this.setState({
+                firstName: "",
+                firstNameError: "",
+                lastName: "",
+                lastNameError: "",
+                email: "",
+                emailError: "",
+                phoneNumber: "",
+                phoneNumberError: ""
+            }
+            )
+            this.props.history.push("/delay")
+             
+    }
+
+}
+
 
    
 
@@ -90,7 +127,7 @@ export default class Booknow extends Component {
         const room = getRoom(this.state.slug);
         // var len = 10;
         // var random = parseInt((Math.random() * 9 + 1) * Math.pow(10,len-1), 10);
-        const {formErrors} = this.state
+        
         const checkIn = this.state.checkIn    
         const checkOut = this.state.checkOut
         let checkinFormattedDate = moment(checkIn).format('MM-DD-YYYY')
@@ -167,21 +204,21 @@ export default class Booknow extends Component {
                             
                         </div>
                     </div>
-                    <form className='style'>
+                    <form className='style' onSubmit={this.handleSubmit}>
                         <h2 style={{paddingLeft:'35%'}}>Enter the Details</h2>
                         <br/>
   <div className="form-group">
   <div className='row'>
   <div className="col-md-6 col-12">
     <label for="firstName">First Name</label>
-    <input className="form-control" placeholder="Enter First Name*" type="text" name="firstName" onChange={this.handleChange} noValidate></input>
-    {formErrors.firstName.length > 0 && (<span className="errorMessage">{formErrors.firstName}</span>)}
+    <input className="form-control" placeholder="Enter First Name*" type="text" name="firstName" onChange={this.handleChange} value={this.state.firstName} autoComplete="off"></input>
+    { <p className='text-danger'>{this.state.firstNameError}</p> }
     </div>
   <div className="col-md-6 col-12">
   <div className="form-group">
     <label for="lastName">Last Name</label>
-    <input className="form-control" placeholder="Enter Last Name*" type="text" name="lastName" onChange={this.handleChange} noValidate></input>
-    {formErrors.lastName.length > 0 && (<span className="errorMessage">{formErrors.lastName}</span>)}
+    <input className="form-control" placeholder="Enter Last Name*" type="text" name="lastName" onChange={this.handleChange} value={this.state.lastName} autoComplete="off"></input>
+    { <p className='text-danger'>{this.state.lastNameError}</p> }
   </div>
   </div>
   </div>
@@ -189,13 +226,13 @@ export default class Booknow extends Component {
   <div className='row'>
   <div className="col-md-6 col-12">
     <label for="exampleInputEmail1">Email</label>
-    <input className="form-control" placeholder="Enter Email*" type="email" name="email" onChange={this.handleChange} noValidate></input>
-    {formErrors.email.length > 0 && (<span className="errorMessage">{formErrors.email}</span>)}
+    <input className="form-control" placeholder="Enter Email*" type="email" name="email" onChange={this.handleChange} value={this.state.email} autoComplete="off"></input>
+    { <p className='text-danger'>{this.state.emailError}</p> }
     </div>
     <div className="col-md-6 col-12">
     <label for="phoneNumber">Phone Number</label>
-    <input className="form-control" placeholder="Enter Phone Number*" type="number" name="phoneNumber" onChange={this.handleChange} noValidate></input>
-    {formErrors.phoneNumber.length > 0 && (<span className="errorMessage">{formErrors.phoneNumber}</span>)}
+    <input className="form-control" placeholder="Enter Phone Number*" type="number" name="phoneNumber" onChange={this.handleChange} value={this.state.phoneNumber} autoComplete="off"></input>
+    { <p className='text-danger'>{this.state.phoneNumberError}</p> }
     </div>
 </div>
 
@@ -207,7 +244,7 @@ export default class Booknow extends Component {
 <DatePicker selected={this.state.checkIn} onChange={this.handleChangeStart} minDate={moment().toDate()} className="form-control" />
 </div>
 <div className="col-md-6 col-12">
-<label htmlFor="Todate" className="font-weight-bolder mr-3">Check Out </label>
+<label htmlFor="Todate" className="font-weight-bolder mr-3">Check Out </label><br/>
 <DatePicker selected={this.state.checkOut} onChange={this.handleChangeEnd} minDate={moment().toDate()} className="form-control" />
 </div>
 <h6 htmlFor="noOfDays" style={{paddingLeft:'17px', paddingTop:'30px'}}>Number of days : {daysLeft}</h6>
@@ -241,7 +278,7 @@ export default class Booknow extends Component {
                         </div>
                         <div className="col-md-6 col-12 my-auto">
                             <div className="col-md-6 col-12 float-right">
-                               <Link to={"/delay"} style={{textDecoration:"none"}}> <button className="btn btn-block btn-outline-primary">Confirm Booking</button></Link>
+                                <button className="btn btn-block btn-outline-primary">Confirm Booking</button>
                             </div>
                         </div>     
                        
