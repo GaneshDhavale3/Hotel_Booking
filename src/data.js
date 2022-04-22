@@ -30,7 +30,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Single economy rooms are designed for the comfort of the guests with world-class interiors. Single economy rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -86,7 +86,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Single basic rooms are designed for the comfort of the guests with world-class interiors. Single basic rooms are equipped with LCD TV, direct dialling, cable/satellite connection, high-speed internet, high-end bathrooms.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -142,7 +142,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Single standard rooms are designed for the comfort of the guests with world-class interior. Single standard rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries,londery facilities are available, and some additional features are also available.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -198,7 +198,7 @@ export default [
       breakfast: true,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Single deluxe rooms are designed for the comfort of the guests with world-class interiors. Single deluxe rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, and some additional features are also available with 10% discount.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -254,7 +254,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Double economy rooms are designed for the comfort of the guests with world-class interiors. Double economy rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, and some additional features also added to the Double economy rooms with 10% discount.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -310,7 +310,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suit. Double basic rooms are designed for the comfort of the guests with world-class interiors. Double basic rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available and 15% discount on prebooking.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -366,7 +366,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Double standard rooms are designed for the comfort of the guests with world-class interiors. Double standard rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, and some additional features are also available with 20% discount on prebooking.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -422,7 +422,7 @@ export default [
       breakfast: true,
       featured: true,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Double deluxe rooms are designed for the comfort of the guests with world-class interiors. Double deluxe rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, and some additional features are also available with 30% discount on prebooking.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -478,7 +478,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Family economy rooms are designed for the comfort of the guests with world-class interiors. Family economy rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available, and free playstations for kids with 40% discount on prebooking.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -534,7 +534,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Family basic rooms are designed for the comfort of the guests with world-class interiors. Family basic rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available, and free playstations for kids with healthy snacks and 40% discount on prebooking.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -590,7 +590,7 @@ export default [
       breakfast: false,
       featured: false,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+      "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Family standard rooms are designed for the comfort of the guests with world-class interiors. Family standard rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available, and free playstations for kids with healthy snacks and 45% discount on prebooking.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -646,7 +646,7 @@ export default [
       breakfast: true,
       featured: true,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+        "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Family deluxe rooms are designed for the comfort of the guests with world-class interiors. Family deluxe rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available, and free playstations for kids with healthy snacks and 50% discount on prebooking.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -702,7 +702,7 @@ export default [
       breakfast: true,
       featured: true,
       description:
-        "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+      "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Presidential rooms are designed for the comfort of the guests with world-class interiors. Presidential rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available and 60% discount on prebooking.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
