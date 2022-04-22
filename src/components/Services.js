@@ -12,13 +12,13 @@ export default class Services extends Component {
                 
                 icon:<FaHiking/>,
                 title: "Endless Hiking",
-                info: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur"
+                info: "The Stairway Wild Area is a place worth exploring with waterfalls, a lake, view, and extensive, abandoned bluestone quarries."
                 
             },
             {
                 icon:<FaShuttleVan/>,
                 title: "Free Shuttle",
-                info: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur"
+                info: "Free travelling services from one place two another place in buses and also it will take you to a private beach and dive centre."
             },
            
 
