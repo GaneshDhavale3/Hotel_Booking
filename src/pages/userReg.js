@@ -7,13 +7,7 @@ import { useHistory } from "react-router-dom";
 
 function UserReg() {
 
-    // const [firstname, setFirstname] = useState('')
-    // const [lastname, setLastname] = useState('')
-    // const [gender, setGender] = useState('')
-    // const [contact, setContact] = useState('')
-    // const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
-    // const [cpwd, setCpwd]=useState('')
+
 
     const initialValues= { firstname:"", lastname:"", gender:"", contact:"",email:"", password:"", cpwd:""};
     const [formValues, setFormValues] = useState(initialValues);
