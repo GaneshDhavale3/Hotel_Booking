@@ -29,6 +29,7 @@ export default [
       capacity: 1,
       breakfast: false,
       featured: false,
+      inventoryId: 1,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Single economy rooms are designed for the comfort of the guests with world-class interiors. Single economy rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries.",
       extras: [
@@ -85,6 +86,7 @@ export default [
       capacity: 1,
       breakfast: false,
       featured: false,
+      inventoryId: 2,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Single basic rooms are designed for the comfort of the guests with world-class interiors. Single basic rooms are equipped with LCD TV, direct dialling, cable/satellite connection, high-speed internet, high-end bathrooms.",
       extras: [
@@ -141,6 +143,7 @@ export default [
       capacity: 1,
       breakfast: false,
       featured: false,
+      inventoryId: 3,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Single standard rooms are designed for the comfort of the guests with world-class interior. Single standard rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries,londery facilities are available, and some additional features are also available.",
       extras: [
@@ -197,6 +200,7 @@ export default [
       capacity: 1,
       breakfast: true,
       featured: false,
+      inventoryId: 4,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Single deluxe rooms are designed for the comfort of the guests with world-class interiors. Single deluxe rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, and some additional features are also available with 10% discount.",
       extras: [
@@ -253,6 +257,7 @@ export default [
       capacity: 2,
       breakfast: false,
       featured: false,
+      inventoryId: 5,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Double economy rooms are designed for the comfort of the guests with world-class interiors. Double economy rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, and some additional features also added to the Double economy rooms with 10% discount.",
       extras: [
@@ -309,6 +314,7 @@ export default [
       capacity: 2,
       breakfast: false,
       featured: false,
+      inventoryId: 6,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suit. Double basic rooms are designed for the comfort of the guests with world-class interiors. Double basic rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available and 15% discount on prebooking.",
       extras: [
@@ -365,6 +371,7 @@ export default [
       capacity: 2,
       breakfast: false,
       featured: false,
+      inventoryId: 7,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Double standard rooms are designed for the comfort of the guests with world-class interiors. Double standard rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, and some additional features are also available with 20% discount on prebooking.",
       extras: [
@@ -421,6 +428,7 @@ export default [
       capacity: 2,
       breakfast: true,
       featured: true,
+      inventoryId: 8,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Double deluxe rooms are designed for the comfort of the guests with world-class interiors. Double deluxe rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, and some additional features are also available with 30% discount on prebooking.",
       extras: [
@@ -477,6 +485,7 @@ export default [
       capacity: 3,
       breakfast: false,
       featured: false,
+      inventoryId: 9,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Family economy rooms are designed for the comfort of the guests with world-class interiors. Family economy rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available, and free playstations for kids with 40% discount on prebooking.",
       extras: [
@@ -533,6 +542,7 @@ export default [
       capacity: 4,
       breakfast: false,
       featured: false,
+      inventoryId: 10,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Family basic rooms are designed for the comfort of the guests with world-class interiors. Family basic rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available, and free playstations for kids with healthy snacks and 40% discount on prebooking.",
       extras: [
@@ -589,6 +599,7 @@ export default [
       capacity: 5,
       breakfast: false,
       featured: false,
+      inventoryId: 11,
       description:
       "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Family standard rooms are designed for the comfort of the guests with world-class interiors. Family standard rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available, and free playstations for kids with healthy snacks and 45% discount on prebooking.",
       extras: [
@@ -645,6 +656,7 @@ export default [
       capacity: 6,
       breakfast: true,
       featured: true,
+      inventoryId: 12,
       description:
         "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Family deluxe rooms are designed for the comfort of the guests with world-class interiors. Family deluxe rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available, and free playstations for kids with healthy snacks and 50% discount on prebooking.",
       extras: [
@@ -701,6 +713,7 @@ export default [
       capacity: 10,
       breakfast: true,
       featured: true,
+      inventoryId: 13,
       description:
       "Hotel offers various kinds of rooms to its guests including Grand, Executive, Diplomatic and Presidential Suites. Presidential rooms are designed for the comfort of the guests with world-class interiors. Presidential rooms are equipped with 40-inch LCD TV, direct dialling, cable/satellite connection, high-speed internet, mini bar and high-end bathroom toiletries, londery facilities are available, some additional features are also available and 60% discount on prebooking.",
       extras: [

@@ -11,7 +11,7 @@ export default function Home() {
     return (
         <>
 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators" data-interval="1000">
+  <ol className="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>

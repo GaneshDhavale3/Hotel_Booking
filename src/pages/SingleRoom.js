@@ -6,15 +6,31 @@ import { RoomContext } from '../context';
 import StyledHero from '../components/StyledHero';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import AuthService from "../Service/auth.service";
 
 export default class SingleRoom extends Component {
     constructor (props){
         super(props);
         this.state = {
             slug: this.props.match.params.slug,
-            defaultBcg
+            defaultBcg,
         };
     }
+
+    onClick = e => {
+        e.preventDefault();
+        const user = AuthService.getCurrentUser();
+
+          if(user){
+            this.props.history.push(`/booknow/${this.state.slug}`) 
+          }
+
+            else{
+                alert("Please Login...");
+                this.props.history.push("/login");
+            }
+    }
+
     static contextType = RoomContext;
     render() {
         const { getRoom } = this.context;
@@ -79,13 +95,15 @@ export default class SingleRoom extends Component {
                           return <li key={index}>{item}</li>
                     })}
                 </ul>
+                
+                
                 <div className="p-4 clearfix">
-                    <div className="row">
+                        <div className="row">
                        <div className="col-md-3 col-12 ml-auto">
-                          <Link to={`/booknow/${this.state.slug}`} className="btn btn-outline-primary btn-block btn-lg float-right ">Book Now</Link>
+                          <button onClick={this.onClick} className="btn btn-outline-primary btn-block btn-lg float-right ">Book Now</button>
                        </div>
-                    </div>
-                </div>
+                       </div>  
+                </div> 
             </section>
             <Footer/>
             </>

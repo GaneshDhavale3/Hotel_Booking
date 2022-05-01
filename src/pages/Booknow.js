@@ -7,6 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import defaultBcg from '../images/room-3.jpeg';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import AuthService from "../Service/auth.service";
+import axios from 'axios';
 
 
 
@@ -21,8 +23,7 @@ export default class Booknow extends Component {
         slug: this.props.match.params.slug,
         defaultBcg,
         checkIn: new Date(),
-        checkOut: new Date(),
-        bookingId: null,    
+        checkOut: new Date(), 
         firstName: "",
         lastName: "",
         email: "",
@@ -91,9 +92,40 @@ export default class Booknow extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
+  
         const err = this.validate();
  
         if(!err) {
+      
+           let user = JSON.parse(localStorage.getItem('user'))
+           const token = user.data
+           console.log(token)
+        //    const auth = 'Bearer ' + user
+        //    console.log(auth)
+           const book = this.booking()
+           const id = AuthService.getCurrentUser().userId;
+           console.log(book)
+           const url = `http://localhost:8019/user/${id}`
+        //   fetch(`http://localhost:8019/user/${id}`, {
+        //       method: "POST",
+        //       mode: 'no-cors',
+        //       credentials: 'include',
+        //       headers: new Headers({
+        //         'Authorization': auth,
+        //         'Content-Type': 'application/json'
+        //       }),
+        //       body: JSON.stringify(book)
+
+        axios.post(url,book, {
+                headers: {
+                    'Authorization': `Bearer ${token}` ,
+                    'Accept': 'application/json', 
+                    'Content-Type': 'application/json'
+                }, 
+                mode: 'no-cors'
+        })
+          .then((res) => {
+              console.log(res)
             this.setState({
                 firstName: "",
                 firstNameError: "",
@@ -105,11 +137,43 @@ export default class Booknow extends Component {
                 phoneNumberError: ""
             }
             )
-            this.props.history.push("/delay")
+             
+          }).catch((err) =>{
+              console.log(err)
+          }
+
+          )
+
+          
+
+            //this.props.history.push("/delay")
              
     }
 
 }
+
+  booking = () => {
+    var len = 10;
+    var random = parseInt((Math.random() * 9 + 1) * Math.pow(10,len-1), 10);
+    const checkIn = this.state.checkIn    
+    const checkOut = this.state.checkOut
+    let checkinFormattedDate = moment(checkIn).format('MM-DD-YYYY')
+    let checkoutFormattedDate = moment(checkOut).format('MM-DD-YYYY')
+    let checkInFormat = moment(checkIn).format("YYYY-MM-DD")
+    let checkOutFormat = moment(checkOut).format("YYYY-MM-DD")
+    const daysLeft = this.calculateDaysLeft(checkinFormattedDate, checkoutFormattedDate)
+    const { getRoom } = this.context;
+    const room = getRoom(this.state.slug);
+    const total = room.price * daysLeft;
+
+    const book = {inventory: {inventoryId: room.inventoryId}, checkIn: checkInFormat,
+                  checkOut: checkOutFormat, totalPrice: total, firstName: this.state.firstName,
+                  lastName: this.state.lastName,  invoiceNumber: random,
+                   phoneNumber: this.state.phoneNumber}
+    return book;
+
+  }
+  
 
 
    
@@ -125,9 +189,6 @@ export default class Booknow extends Component {
     render() {
         const { getRoom } = this.context;
         const room = getRoom(this.state.slug);
-        // var len = 10;
-        // var random = parseInt((Math.random() * 9 + 1) * Math.pow(10,len-1), 10);
-        
         const checkIn = this.state.checkIn    
         const checkOut = this.state.checkOut
         let checkinFormattedDate = moment(checkIn).format('MM-DD-YYYY')
@@ -210,13 +271,13 @@ export default class Booknow extends Component {
   <div className="form-group">
   <div className='row'>
   <div className="col-md-6 col-12">
-    <label for="firstName">First Name</label>
+    <label id="firstName">First Name</label>
     <input className="form-control" placeholder="Enter First Name*" type="text" name="firstName" onChange={this.handleChange} value={this.state.firstName} autoComplete="off"></input>
     { <p className='text-danger'>{this.state.firstNameError}</p> }
     </div>
   <div className="col-md-6 col-12">
   <div className="form-group">
-    <label for="lastName">Last Name</label>
+    <label id="lastName">Last Name</label>
     <input className="form-control" placeholder="Enter Last Name*" type="text" name="lastName" onChange={this.handleChange} value={this.state.lastName} autoComplete="off"></input>
     { <p className='text-danger'>{this.state.lastNameError}</p> }
   </div>
@@ -225,12 +286,12 @@ export default class Booknow extends Component {
 
   <div className='row'>
   <div className="col-md-6 col-12">
-    <label for="exampleInputEmail1">Email</label>
+    <label id="exampleInputEmail1">Email</label>
     <input className="form-control" placeholder="Enter Email*" type="email" name="email" onChange={this.handleChange} value={this.state.email} autoComplete="off"></input>
     { <p className='text-danger'>{this.state.emailError}</p> }
     </div>
     <div className="col-md-6 col-12">
-    <label for="phoneNumber">Phone Number</label>
+    <label id="phoneNumber">Phone Number</label>
     <input className="form-control" placeholder="Enter Phone Number*" type="number" name="phoneNumber" onChange={this.handleChange} value={this.state.phoneNumber} autoComplete="off"></input>
     { <p className='text-danger'>{this.state.phoneNumberError}</p> }
     </div>
@@ -254,14 +315,14 @@ export default class Booknow extends Component {
   
   <div className="col-md-6 col-12">
   <div className="form-group">
-    <label for="lastName">Room Type</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value={name}></input>
+    <label id="lastName">Room Type</label> 
+    <input type="text" className="form-control" id="exampleInputPassword1" value={name}></input>
   </div>
   </div>
   <div className="col-md-6 col-12" >
   <div className="form-group" >
-    <label for="lastName">Price</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value={daysLeft*price}></input>
+    <label id="lastName">Price</label>
+    <input type="text" className="form-control" id="exampleInputPassword1" value={daysLeft*price}></input>
   </div>
   </div>
   </div>

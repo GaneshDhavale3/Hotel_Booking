@@ -1,96 +1,156 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState ,useEffect} from 'react';
+import React, { Component} from 'react';
 import Navbar from "../components/Navbar";
 import Footer from  "../components/Footer";
-import { useHistory } from "react-router-dom";
-
-
-function UserReg() {
+import AuthService from "../Service/auth.service";
 
 
 
-    const initialValues= { firstname:"", lastname:"", gender:"", contact:"",email:"", password:"", cpwd:""};
-    const [formValues, setFormValues] = useState(initialValues);
-    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
-    let history = useHistory();
 
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });
-      };
-
-
-                            
     
+export default class UserReg extends Component{ 
 
-    const HandleSubmit = (e) =>{
-       
-      
-        // const user = { firstname, lastname, gender, contact, email, password }
-        // console.log(user);
-        // fetch("http://localhost:8080/user/add", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify(user)
-        // }).then(() => {
-        //     console.log("new user added")
-        // })
-
-        e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
-    if(isSubmit===true){
-      history.push("/contact")
-    }
-    
-       
+        constructor(props){ 
+            super(props);
+            this.onChangefirstName = this.onChangefirstName.bind(this);
+            this.onChangelastName = this.onChangelastName.bind(this);
+            this.onChangeGender = this.onChangeGender.bind(this);
         
-    };
-
-    useEffect(() => {
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
+           this.state = {
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+              gender: "",
+              contact: "",
+              cpwd: "",
+              firstNameError: "",
+              lastNameError: "",
+              emailError: "",
+              passwordError: "",
+              contactError: "",
+              cpwdError: "",
+              genderError: ""
+              
+           }
         }
-      }, [formErrors]);
-      
-      const validate = (values) => {
-        const errors = {};
+
+         handleChange = (e) => {
+            this.setState({[e.target.name]: e.target.value});
+          };
+
+          onChangefirstName(e){
+              this.setState({firstName: e.target.value})
+          }
+
+          onChangelastName(e){
+            this.setState({lastName: e.target.value})
+          }
+
+          onChangeGender(e){
+              this.setState({gender: e.target.value})
+          }
+        
+
+     validate = () => {
+        let isError = false;
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        if (!values.firstname) {
-          errors.firstname = "First name is required!";
+        const errors = {
+            firstNameError: "",
+            lastNameError: "",
+            emailError: "",
+            contactError: "",
+            passwordError: "",
+            cpwdError:"",
+            genderError: ""
         }
-        if(!values.lastname) {
-          errors.lastname = "Last name is required"
-        }
-        if(values.contact.length !== 10){
-          errors.contact ="Mobile number must cantain 10 digits";
-        }
-        if (!values.email) {
-          errors.email = "Email is required!";
-        } else if (!regex.test(values.email)) {
-          errors.email = "This is not a valid email format!";
-        }
-        if (!values.password) {
-          errors.password = "Password is required";
-        } else if (values.password.length < 4) {
-          errors.password = "Password must be more than 4 characters";
-        } else if (values.password.length >= 10) {
-          errors.password = "Password cannot exceed more than 10 characters";
+ 
+        if(!this.state.firstName) {
+            isError = true;
+            errors.firstNameError = "Field Cannot be Blank"
         }
 
-        if(values.password !== values.cpwd){
-            errors.cpwd="password and Conirm password does not match";
+        if(!this.state.lastName) {
+            isError = true;
+            errors.lastNameError = "Field Cannot be Blank"
         }
-        
-        return errors;
-      };
-    
+
+        if (!this.state.email) {
+         errors.emailError = "Email is required!";
+         isError = true;
+       }
+       else if(!regex.test(this.state.email)){
+           errors.emailError = "Not a Valid Email"
+           isError = true;
+       }
+
+       if(!this.state.password){
+           errors.passwordError = "Password is required";
+       }
+       else if(this.password < 4){
+            isError = true;
+                errors.passwordError = "Password must be more than 4 characteres";
+       }
+       else if(this.password >= 10){
+           errors.passwordError = "Password must be 10 characters"
+
+       }
+
+       if(this.state.contact.length < 10){
+           isError = true;
+         errors.contactError ="Mobile number must cantain 10 digits";
+       }
+
+       if(this.state.password !== this.state.cpwd){
+           isError = true;
+           errors.cpwdError = "Mismatch Password";
+       }
+
+       if(!this.state.gender){
+        isError = true;
+        errors.genderError = "Field is required";
+    }
+       this.setState({
+           ...this.state,
+           ...errors
+       });
+       return isError;
+    }  
 
 
+    handleSubmit = (e) =>{
+        e.preventDefault()
+        const err = this.validate()
+        if(!err){
+            this.setState({
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: "",
+                contact: "",
+                gender: "",
+                cpwd: "",
+                firstNameError: "",
+                lastNameError: "",
+                emailError:"",
+                passwordError: "",
+                contactError: "",
+                cpwdError: "",
+                genderError:""
+            })
+            AuthService.register(this.state.email, this.state.password, this.state.firstName, this.state.lastName, this.state.gender, this.state.contact).then(
+                () => {
+                    this.props.history.push("/login")
+                    window.location.reload()
+                }
+            )
+          
+        }
+    }
 
 
-
+   render(){
+       const {firstName, lastName, email, password, cpwd, contact} = this.state
     return (
         <div className="bg-style">
 
@@ -100,7 +160,7 @@ function UserReg() {
                 </div>
            
       <div >
-      <form onSubmit={HandleSubmit}>    
+      <form onSubmit={this.handleSubmit}>    
       <div className="App container mt-5 " >
         <div className="row justify-content-center pt-5" >
             <div className="col-sm-6" >
@@ -111,8 +171,8 @@ function UserReg() {
                     <div className="form-group" >
                         <label>First Name</label>
                         <input  type="text" className="form-control" 
-                            onChange={handleChange} value={formValues.firstname} id="firstname" name="firstname" autoComplete="off" />
-                            <p className="text-danger">{formErrors.firstname}</p>
+                            onChange={this.onChangefirstName} value={firstName} id="firstname" name="firstname" autoComplete="off" />
+                            <p className="text-danger">{this.state.firstNameError}</p>
                        
                     </div>
 
@@ -120,8 +180,8 @@ function UserReg() {
                     <div className="form-group">
                         <label>Last Name</label>
                         <input type="text" className="form-control"  
-                            onChange={handleChange} value={formValues.lastname} id="lastname" name="lastname" autoComplete="off"  />
-                             <p className="text-danger">{formErrors.lastname}</p>
+                            onChange={this.onChangelastName} value={lastName} id="lastname" name="lastname" autoComplete="off"  />
+                             <p className="text-danger">{this.state.lastNameError}</p>
                     
                     </div>
                    
@@ -129,48 +189,48 @@ function UserReg() {
                         <label>Gender</label>&nbsp;&nbsp;&nbsp;
 
                         <input type="radio"
-                            id="Male" name="gender" value="Male" onChange={handleChange}   /><label>Male</label>&nbsp;&nbsp;&nbsp;
+                            id="Male" name="gender" value="Male" onChange={this.onChangeGender}   /><label>Male</label>&nbsp;&nbsp;&nbsp;
 
                         <input type="radio"
-                            id="Female" name="gender" value="Female" onChange={handleChange}   /> <label>Female</label>
+                            id="Female" name="gender" value="Female" onChange={this.onChangeGender}   /> <label>Female</label>
                         
-                                        
+                        <p className="text-danger">{this.state.genderError}</p>              
                     </div>
                    
 
                     <div className="form-group">
                         <label>Contact Number</label>
-                        <input type="tel" className="form-control" 
-                               onChange={handleChange} value={formValues.contact} id="contact" name="contact" autoComplete="off"  />
-                        <p class="text-danger">{formErrors.contact}</p>
+                        <input type="number" className="form-control" 
+                               onChange={this.handleChange} value={contact} id="contact" name="contact" autoComplete="off"  />
+                        <p className="text-danger">{this.state.contactError}</p>
                         
                     </div>
 
                     <div className="form-group">
                         <label>Email</label>
                         <input type="email" className="form-control" placeholder="example@gmail.com" 
-                            onChange={handleChange} value={formValues.email} id="email" name="email" autoComplete="off"  />
-                         <p class="text-danger">{formErrors.email}</p>               
+                            onChange={this.handleChange} value={email} id="email" name="email" autoComplete="off"  />
+                         <p className="text-danger">{this.state.emailError}</p>               
                     </div>
 
 
                     <div className="form-group mt-3">
                         <label>Password</label>
                         <input type="password" className="form-control"  
-                           onChange={handleChange} value={formValues.password} id="password" name="password" autoComplete="off" />
-                       
+                           onChange={this.handleChange} value={password} id="password" name="password" autoComplete="off" />
+                           <p className="text-danger">{this.state.passwordError}</p>  
                     </div>
 
                     <div className="form-group mt-3">
                         <label>Confirm Password</label>
                         <input type="password" className="form-control"
-                            onChange={handleChange} value={formValues.cpwd} id="cpwd" name="cpwd" autoComplete="off"  />
-                        <p class="text-danger">{formErrors.cpwd}</p>
+                            onChange={this.handleChange} value={cpwd} id="cpwd" name="cpwd" autoComplete="off"  />
+                        <p className="text-danger">{this.state.cpwdError}</p>
                     </div>
 
                     <div><br/></div>
                     
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <button type="submit" className="btn btn-primary">Sign Up</button>
                     
                 </div>
             </div>
@@ -183,4 +243,4 @@ function UserReg() {
     )
 }
 
-export default UserReg;
+}

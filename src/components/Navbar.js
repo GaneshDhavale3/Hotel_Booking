@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {NavLink} from 'react-router-dom';
 import { FaAlignRight } from 'react-icons/fa';
 import jquery from 'jquery';
+import AuthService from "../Service/auth.service";
 
 // for changing navbar  color
 jquery(window).scroll(function() {
 jquery('nav').toggleClass('scrolled', jquery(this).scrollTop() > 0);
 })
 
-const Navbar = () => {
+function Navbar () {
+
+    const [currentUser, setCurrentUser] = useState(undefined);
+    
+
+    useEffect(() => {
+      const user = AuthService.getCurrentUser();
+      
+  
+      if (user) {
+        setCurrentUser(user);
+
+      }
+    }, []);
+
+    const logOut = () => {
+        AuthService.logout();
+       
+    }
     return (
     <>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark py-2 fixed-top">
@@ -26,15 +45,34 @@ const Navbar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active_class" exact to="/rooms">Rooms</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active_class" exact to="/booking">Booking</NavLink>
-                        </li>
+                        {
+                            currentUser ? (
+                                <div className="navbar-nav ms-auto">
+                                <li className="nav-item">
+                                <NavLink className="nav-link" activeClassName="active_class" exact to="/booking">Booking</NavLink>
+                            </li>
+                            </div>) : 
+                            (
+                                <div></div>
+                            )
+                        }
+        
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="active_class" exact to="/about">About</NavLink>
                         </li>
+                        {
+                            currentUser ? (
+                                <div className="navbar-nav ms-auto">
+
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active_class" exact to="/contact">Login</NavLink>
-                        </li>                             
+                            <NavLink className="nav-link" activeClassName="active_class" exact to="/login" onClick={logOut}>Logout</NavLink>
+                           </li> 
+                           </div>) : (    
+                           <div className="navbar-nav ms-auto">  
+                         <li className="nav-item">
+                         <NavLink className="nav-link" activeClassName="active_class" exact to="/login">Login</NavLink>
+                     </li> 
+                      </div> )}                       
                     </ul>
                 </div>
             </div>

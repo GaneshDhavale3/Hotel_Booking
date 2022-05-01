@@ -8,7 +8,6 @@ import Rooms from './pages/Rooms';
 import SingleRoom from './pages/SingleRoom';
 import Error from './pages/Error';
 import About from './pages/About';
-import Contact from './pages/Contact';
 import userReg from './pages/userReg';
 import Booknow from './pages/Booknow';
 import { Booking } from './pages/Booking';
@@ -16,6 +15,7 @@ import { OTP } from './components/Otp';
 import Delays from './components/Delays';
 import Under from './pages/Under';
 import Preloading from './components/Preloading';
+import Login from './pages/Login';
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/rooms/" component={Rooms}/>
           <Route exact path="/booking/" component={Booking}/>
           <Route exact path="/rooms/:slug" component={SingleRoom} />
