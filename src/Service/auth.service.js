@@ -45,6 +45,7 @@ const login = (email, password) => {
     return JSON.parse(localStorage.getItem('user'));;
   }
 
+
  const authService = {
      login,
      logout,
@@ -52,6 +53,8 @@ const login = (email, password) => {
      register,
      
  }
+
+
 
  export default authService;
 

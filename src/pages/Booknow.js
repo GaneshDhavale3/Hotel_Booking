@@ -8,8 +8,8 @@ import defaultBcg from '../images/room-3.jpeg';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import AuthService from "../Service/auth.service";
-import axios from 'axios';
-import { bookingApi } from './Test';
+
+
 
 
 
@@ -93,31 +93,27 @@ export default class Booknow extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
-  
+
+        var len = 10;
+        var random = parseInt((Math.random() * 9 + 1) * Math.pow(10,len-1), 10);
+        const checkIn = this.state.checkIn    
+        const checkOut = this.state.checkOut
+        let checkinFormattedDate = moment(checkIn).format('MM-DD-YYYY')
+        let checkoutFormattedDate = moment(checkOut).format('MM-DD-YYYY')
+        let checkInFormat = moment(checkIn).format("YYYY-MM-DD")
+        let checkOutFormat = moment(checkOut).format("YYYY-MM-DD")
+        const daysLeft = this.calculateDaysLeft(checkinFormattedDate, checkoutFormattedDate)
+        const { getRoom } = this.context;
+        const room = getRoom(this.state.slug);
+        const total = room.price * daysLeft;
+    
+        const book = {inventory: {inventoryId: room.inventoryId}, checkIn: checkInFormat,
+                      checkOut: checkOutFormat, totalPrice: total, firstName: this.state.firstName,
+                      lastName: this.state.lastName,  invoiceNumber: random,
+                       phoneNumber: this.state.phoneNumber}
         const err = this.validate();
- 
         if(!err) {
-      
-           let user = JSON.parse(localStorage.getItem('user'))
-           const token = user.jwtToken
-        //    console.log(token)
-              const auth = 'Bearer ' + token
-            //   console.log(auth)
-           const book = this.booking()
-        //    const id = AuthService.getCurrentUser().userId;
-           console.log(book)
-        //    const url = `http://localhost:8019/user/${id}`
-         bookingApi(book,auth)
-        // axios.post(url,book, {
-        //         headers: {
-        //             'Authorization': `Bearer ${token}` ,
-        //             'Accept': 'application/json', 
-        //             'Content-Type': 'application/json'
-        //         }, 
-        //         mode: 'no-cors'
-        // })
-          .then((res) => {
-              console.log(res)
+
             this.setState({
                 firstName: "",
                 firstNameError: "",
@@ -129,42 +125,27 @@ export default class Booknow extends Component {
                 phoneNumberError: ""
             }
             )
-             
-          }).catch((err) =>{
-              console.log(err)
-          }
+      
+           let user = JSON.parse(localStorage.getItem('user'))
+           let id = AuthService.getCurrentUser().userId;
+           const token = user.jwtToken
+           console.log(book)
 
-          )
+           fetch(`http://localhost:8019/user/${id}`, {
+                method: "POST",
+                headers: { 
+                    "Authorization": 'Bearer ' + token,
+                    "Content-Type": "application/json" },
+                body: JSON.stringify(book)
+            }).then(() => {
+                console.log("Successfully Booked")
+            })
 
-          
-
-            //this.props.history.push("/delay")
+            this.props.history.push("/delay")
              
     }
 
 }
-
-  booking = () => {
-    var len = 10;
-    var random = parseInt((Math.random() * 9 + 1) * Math.pow(10,len-1), 10);
-    const checkIn = this.state.checkIn    
-    const checkOut = this.state.checkOut
-    let checkinFormattedDate = moment(checkIn).format('MM-DD-YYYY')
-    let checkoutFormattedDate = moment(checkOut).format('MM-DD-YYYY')
-    let checkInFormat = moment(checkIn).format("YYYY-MM-DD")
-    let checkOutFormat = moment(checkOut).format("YYYY-MM-DD")
-    const daysLeft = this.calculateDaysLeft(checkinFormattedDate, checkoutFormattedDate)
-    const { getRoom } = this.context;
-    const room = getRoom(this.state.slug);
-    const total = room.price * daysLeft;
-
-    const book = {inventory: {inventoryId: room.inventoryId}, checkIn: checkInFormat,
-                  checkOut: checkOutFormat, totalPrice: total, firstName: this.state.firstName,
-                  lastName: this.state.lastName,  invoiceNumber: random,
-                   phoneNumber: this.state.phoneNumber}
-    return book;
-
-  }
   
 
 
