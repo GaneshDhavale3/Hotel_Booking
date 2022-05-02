@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import AuthService from "../Service/auth.service";
 import axios from 'axios';
+import { bookingApi } from './Test';
 
 
 
@@ -98,32 +99,23 @@ export default class Booknow extends Component {
         if(!err) {
       
            let user = JSON.parse(localStorage.getItem('user'))
-           const token = user.data
-           console.log(token)
-        //    const auth = 'Bearer ' + user
-        //    console.log(auth)
+           const token = user.jwtToken
+        //    console.log(token)
+              const auth = 'Bearer ' + token
+            //   console.log(auth)
            const book = this.booking()
-           const id = AuthService.getCurrentUser().userId;
+        //    const id = AuthService.getCurrentUser().userId;
            console.log(book)
-           const url = `http://localhost:8019/user/${id}`
-        //   fetch(`http://localhost:8019/user/${id}`, {
-        //       method: "POST",
-        //       mode: 'no-cors',
-        //       credentials: 'include',
-        //       headers: new Headers({
-        //         'Authorization': auth,
-        //         'Content-Type': 'application/json'
-        //       }),
-        //       body: JSON.stringify(book)
-
-        axios.post(url,book, {
-                headers: {
-                    'Authorization': `Bearer ${token}` ,
-                    'Accept': 'application/json', 
-                    'Content-Type': 'application/json'
-                }, 
-                mode: 'no-cors'
-        })
+        //    const url = `http://localhost:8019/user/${id}`
+         bookingApi(book,auth)
+        // axios.post(url,book, {
+        //         headers: {
+        //             'Authorization': `Bearer ${token}` ,
+        //             'Accept': 'application/json', 
+        //             'Content-Type': 'application/json'
+        //         }, 
+        //         mode: 'no-cors'
+        // })
           .then((res) => {
               console.log(res)
             this.setState({

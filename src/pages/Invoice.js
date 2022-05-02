@@ -10,6 +10,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AuthService from "../Service/auth.service";
 import data from '../data';
+import axios from 'axios';
 
 class Invoice extends React.Component {
 
@@ -36,14 +37,24 @@ class Invoice extends React.Component {
 
     }
 
-    async componentDidMount()
+     componentDidMount()
     { 
+        let user = JSON.parse(localStorage.getItem('user'))
+        let token = user.jwtToken
         const id = AuthService.getCurrentUser().userId;
-        const url = `http://localhost:8019/user/${id}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        this.setState({person:data.results[0], loading:true});
-        console.log(data.results[0])
+        const url1 = `http://localhost:8019/user/${id}`;
+       
+        axios({
+            method: 'GET',
+            url: url1,
+            withCredentials: false,
+            headers: {
+                "Authorization": "Bearer "+token,
+            }
+        })
+        .then(res => {
+            console.log(res.data)
+        })
         
     }
 

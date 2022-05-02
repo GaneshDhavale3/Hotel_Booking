@@ -23,6 +23,7 @@ export default class SingleRoom extends Component {
 
           if(user){
             this.props.history.push(`/booknow/${this.state.slug}`) 
+            // this.props.history.push("/test")
           }
 
             else{

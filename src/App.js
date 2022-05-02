@@ -18,6 +18,7 @@ import Preloading from './components/Preloading';
 import Login from './pages/Login';
 
 
+
 function App() {
   return (
     <div className="App">
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/under" component={Under} />
           <Route exact path="/preload" component={Preloading} />
           <Route exact path="/userReg" component={userReg} />
+      
           
           
           <Route component={Error}/>
