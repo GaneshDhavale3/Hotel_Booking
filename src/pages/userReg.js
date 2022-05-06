@@ -87,11 +87,11 @@ export default class UserReg extends Component{
        if(!this.state.password){
            errors.passwordError = "Password is required";
        }
-       else if(this.password < 4){
+       else if(this.state.password < 4){
             isError = true;
                 errors.passwordError = "Password must be more than 4 characteres";
        }
-       else if(this.password >= 10){
+       else if(this.state.password >= 10){
            errors.passwordError = "Password must be 10 characters"
 
        }

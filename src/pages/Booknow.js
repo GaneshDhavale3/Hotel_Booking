@@ -109,7 +109,7 @@ export default class Booknow extends Component {
     
         const book = {inventory: {inventoryId: room.inventoryId}, checkIn: checkInFormat,
                       checkOut: checkOutFormat, totalPrice: total, firstName: this.state.firstName,
-                      lastName: this.state.lastName,  invoiceNumber: random,
+                      lastName: this.state.lastName, email:this.state.email, invoiceNumber: random,
                        phoneNumber: this.state.phoneNumber}
         const err = this.validate();
         if(!err) {
