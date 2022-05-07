@@ -138,7 +138,7 @@ export default class UserReg extends Component{
                 cpwdError: "",
                 genderError:""
             })
-            AuthService.register(this.state.email, this.state.password, this.state.firstName, this.state.lastName, this.state.gender, this.state.contact).then(
+            const response = AuthService.register(this.state.email, this.state.password, this.state.firstName, this.state.lastName, this.state.gender, this.state.contact).then(
                 () => {
                     this.props.history.push("/login")
                     window.location.reload()

@@ -10,6 +10,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AuthService from "../Service/auth.service";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Invoice extends React.Component {
 
@@ -56,8 +57,8 @@ class Invoice extends React.Component {
             }
         })
         .then(res => {
-            this.setState({items: res.data})
             this.setState({
+                items: res.data,
                 ids: this.state.items.map(item => item.bookingId)
             })
 
@@ -74,11 +75,10 @@ class Invoice extends React.Component {
 
             }).then(res1 => {
                 this.setState({bItems: res1.data})
+                console.log(this.state.items)
                 console.log(this.state.bItems)
                 this.setState({
-                    roomType: this.state.bItems.inventory.roomType
-                })
-                this.setState({
+                    roomType: this.state.bItems.inventory.roomType,
                     price: this.state.bItems.inventory.price
                 })
                 
@@ -120,10 +120,10 @@ class Invoice extends React.Component {
                                     <div className="card">
                                         <header>
                                             <div style={{paddingTop:"10px"}}>
-                                                    <h3 align="center">Thank You For Booking</h3>
+                                                    <h3 align="center">Thank You For Booking</h3> 
                                             </div>
                                             <div className="d-flex flex-row p-2">
-                                                <div className="d-flex flex-column"> <span className="font-weight-bold">Booking Invoice</span> <small><strong>#{this.state.bItems.invoiceNumber}</strong></small> </div>
+                                                <div className="d-flex flex-column"> <span className="font-weight-bold">Booking Invoice:</span> <small><strong>#{this.state.bItems.invoiceNumber}</strong></small> </div>
                                             </div>
                                         </header>
                                         <hr />
@@ -146,13 +146,13 @@ class Invoice extends React.Component {
                                             </table>
                                         </div>
                                         <hr />
-                                        <div classNameName="products p-2">
-                                            <table classNameName="table table-borderless">
+                                        <div className="products p-2">
+                                            <table className="table table-borderless">
                                                 <tbody>
-                                                    <tr classNameName="add">
+                                                    <tr className="add">
                                                         <td><strong>Room Type</strong></td>
-                                                        <td><strong>Price</strong></td>
-                                                        <td classNameName="text-center"><strong>Total</strong></td>
+                                                        <td><strong>Price per Day</strong></td>
+                                                        <td className="text-center"><strong>Total</strong></td>
                                                     </tr>
                                                     <tr className="content">
                                                         <td>{this.state.roomType}</td>
@@ -199,7 +199,8 @@ class Invoice extends React.Component {
                                             </footer>
                                          
                                             <div className="text-right">
-                                                <button className="btn btn-primary " onClick={this.printDocument}><i className="fas fa-print">Print</i></button>
+                                                <button style={{marginRight:"4px"}} className="btn btn-primary" onClick={this.printDocument}><i className="fas fa-print">Print</i></button> 
+                                                <Link to={"/list"} className="btn btn-primary"><i className="fas fa-print">List Of Bookings</i></Link>
                                             </div>
                                         </div>
                                     </div>

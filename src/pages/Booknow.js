@@ -141,7 +141,7 @@ export default class Booknow extends Component {
                 console.log("Successfully Booked")
             })
 
-            this.props.history.push("/delay")
+            this.props.history.push("/redirecting")
              
     }
 

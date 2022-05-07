@@ -8,7 +8,7 @@ export default function RoomsList({rooms}) {
                 <div className="card shadow-lg border-0 p-4">
                     <div className="row">
                         <div className="col-md-6 col-12 my-auto">
-                            <img src={require('../images/notfound.svg')}  alt="not found" className="img-fluid"/>
+                            <img src={require('../images/notfound.webp')}  alt="not found" className="img-fluid"/>
                         </div>
                         <div className="col-md-6 col-12 mx-auto">
                             <div className="empty-search">

@@ -16,6 +16,8 @@ import Delays from './components/Delays';
 import Under from './pages/Under';
 import Preloading from './components/Preloading';
 import Login from './pages/Login';
+import ListOfBooking from './pages/ListOfBookings';
+
 
 
 
@@ -32,10 +34,11 @@ function App() {
           <Route exact path="/rooms/:slug" component={SingleRoom} />
           <Route exact path="/booknow/:slug" component={Booknow} />
           <Route exact path="/otp" component={OTP} />
-          <Route exact path="/delay" component={Delays} />
+          <Route exact path="/redirecting" component={Delays} />
           <Route exact path="/under" component={Under} />
           <Route exact path="/preload" component={Preloading} />
           <Route exact path="/userReg" component={userReg} />
+          <Route exact path="/list" component={ListOfBooking} />
       
           
           
