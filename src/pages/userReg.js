@@ -30,7 +30,8 @@ export default class UserReg extends Component{
               passwordError: "",
               contactError: "",
               cpwdError: "",
-              genderError: ""
+              genderError: "",
+              message: ""
               
            }
         }
@@ -85,13 +86,15 @@ export default class UserReg extends Component{
        }
 
        if(!this.state.password){
+           isError = true;
            errors.passwordError = "Password is required";
        }
-       else if(this.state.password < 4){
+       else if(this.state.password.length < 4){
             isError = true;
                 errors.passwordError = "Password must be more than 4 characteres";
        }
-       else if(this.state.password >= 10){
+       else if(this.state.password.length >= 10){
+           isError = true;
            errors.passwordError = "Password must be 10 characters"
 
        }
@@ -138,11 +141,31 @@ export default class UserReg extends Component{
                 cpwdError: "",
                 genderError:""
             })
-             AuthService.register(this.state.email, this.state.password, this.state.firstName, this.state.lastName, this.state.gender, this.state.contact).then(
-                () => {
+             AuthService.register(this.state.email, this.state.password, this.state.firstName, this.state.lastName, this.state.gender, this.state.contact)
+             .then(() => {
+                    alert("Successfully Registered..!!!")
                     this.props.history.push("/login")
                     window.location.reload()
-                }
+                },  error => {
+                      if(error.response.status === 409){
+                          this.setState({
+                              message: "Email Already exist"
+                          })
+                      }
+
+                      else if(error.response.status === 0){
+                          this.setState({
+                              message: "Bad or no Network"
+                          })
+                      }
+
+                      else if(error.response.status === 500){
+                        this.setState({
+                            message: "Internal Server Error"
+                        })
+                    }
+                    
+                  }
             )
           
         }
@@ -150,7 +173,7 @@ export default class UserReg extends Component{
 
 
    render(){
-       const {firstName, lastName, email, password, cpwd, contact} = this.state
+       const {firstName, lastName, email, password, cpwd,  contact} = this.state
     return (
         <div className="bg-style">
 
@@ -217,25 +240,35 @@ export default class UserReg extends Component{
                     <div className="form-group mt-3">
                         <label>Password</label>
                         <input type="password" className="form-control"  
-                           onChange={this.handleChange} value={password} id="password" name="password" autoComplete="off" />
+                           onChange={this.handleChange} value={password}  id="password" name="password" autoComplete="off" />
                            <p className="text-danger">{this.state.passwordError}</p>  
                     </div>
 
                     <div className="form-group mt-3">
                         <label>Confirm Password</label>
                         <input type="password" className="form-control"
-                            onChange={this.handleChange} value={cpwd} id="cpwd" name="cpwd" autoComplete="off"  />
+                            onChange={this.handleChange} value={cpwd}  id="cpwd" name="cpwd" autoComplete="off"  />
                         <p className="text-danger">{this.state.cpwdError}</p>
                     </div>
 
                     <div><br/></div>
                     
                     <button type="submit" className="btn btn-primary">Sign Up</button>
+                    <div style={{paddingTop:"20px"}}>
+                    {this.state.message && (
+                <div className="form-group">
+                  <div className="alert alert-danger" role="alert">
+                    {this.state.message}
+                  </div>
+                </div>
+              )}
+              </div>
                     
                 </div>
             </div>
         </div>
         </div>
+       
         </form>
         </div>
         <Footer/>

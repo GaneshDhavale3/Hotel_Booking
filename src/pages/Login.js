@@ -32,7 +32,6 @@ const required = value => {
             this.state = {
               email: "",
               password: "",
-              loading: false,
               message: ""
             };
           }
@@ -66,24 +65,26 @@ const required = value => {
                     window.location.reload();
                   },
                   error => {
-                    const resMessage =
-                      (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                      error.message ||
-                      error.toString();
-          
+                   if(error.response.status === 401){
                     this.setState({
-                      loading: false,
-                      message: resMessage
+                      message: "Invalid Email or Password"
                     });
+                   }
+
+                   else if(error.response.status === 0){
+                    this.setState({
+                      message: "Bad or no Network"
+                    });
+                   }
+
+                   else if(error.response.status === 500){
+                    this.setState({
+                      message: "Internal Server Error"
+                    });
+                   }      
                   }
                 );
-              } else {
-                this.setState({
-                  loading: false
-                });
-              }
+              } 
             }
         
         
@@ -97,7 +98,8 @@ const required = value => {
         <div className="App container mt-5 " >   
         <div className="row justify-content-center pt-5 mt-5">
             <div className="col-sm-6" style={{paddingTop:"9%"}}>
-                <div  className="login-style">
+            <div className="heading"><h2>Login</h2></div>
+                <div  className="form-style">
                     <div className="form-group">
                         <label>Email</label>
                         <Input type="email" className="form-control" placeholder="example@gmail.com" 

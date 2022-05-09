@@ -58,11 +58,16 @@ class Invoice extends React.Component {
         })
         .then(res => {
             this.setState({
-                items: res.data,
+                items: res.data
+                
+            })
+
+            this.setState({
                 ids: this.state.items.map(item => item.bookingId)
             })
 
             const bid = this.state.ids[this.state.ids.length-1]
+            console.log(bid)
             const url2 = `http://localhost:8019/user/booking/${bid}`;
 
             axios({
@@ -82,17 +87,12 @@ class Invoice extends React.Component {
                     price: this.state.bItems.inventory.price
                 })
                 
-            })
-            
-            
+            })          
         })  
     }
 
 
-
     render() {
-       
-      
      return (
 
             <div>
@@ -108,11 +108,6 @@ class Invoice extends React.Component {
                 
                     </div>
                 <div className="App container mt-5 " >
-
-
-                    
-                
-                                            
                     <div id="divToPrint" className="m-3">
                         <div className="row d-flex justify-content-center">
                             <div className="col-md-8 ">
@@ -208,14 +203,9 @@ class Invoice extends React.Component {
                             </div>
                         </div>
                     </div>
-
-                    
-                </div>
-                
+                </div> 
                 <Footer/>
                 </div>
-                
-            
               )}
             </div>
         )
